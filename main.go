@@ -31,7 +31,6 @@ func main() {
 			fmt.Printf("err: %+v\n", err)
 			return err
 		}
-		// fmt.Printf("bytes: %+v\n", string(bytes))
 
 		sess := session.Must(session.NewSession())
 		svc := rekognition.New(sess, aws.NewConfig().WithRegion("us-east-1"))
@@ -46,6 +45,8 @@ func main() {
 		if err != nil {
 			fmt.Println(err.Error())
 		}
+		// cresp.CelebrityFaces
+		fmt.Printf("cresp.CelebrityFaces: %+v\n", cresp.CelebrityFaces)
 
 		return c.JSON(http.StatusOK, cresp.CelebrityFaces)
 	})
